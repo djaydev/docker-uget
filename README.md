@@ -12,6 +12,7 @@ docker run -d \
     -p 5900:5900 \
     -v /docker/appdata/uget:/config:rw \
     -v /home/user/downloads:/downloads:rw \
+    -e THEME=light \
     djaydev/uget
 ```
 
@@ -20,6 +21,7 @@ Where:
 - `Port 5800`: for WebGUI
 - `Port 5900`: for VNC client connection
 - `/home/user/downloads`: Directory for downloaded files.
+- `THEME`: Theme chooser, either light or dark.
 
 Browse to http://your-host-ip:5800 to access the uGet GUI.
 
