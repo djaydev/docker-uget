@@ -1,9 +1,12 @@
 #!/bin/sh
 export HOME=/config
 if [ "$THEME" = "light" ]; then
-BREEZE=Breeze
+mkdir -p /config/xdg/config/gtk-3.0
+printf "[Settings]\ngtk-application-prefer-dark-theme=0" > /config/xdg/config/gtk-3.0/settings.ini
+uget-gtk
 fi
 if [ "$THEME" = "dark" ]; then
-BREEZE=Breeze-Dark
+mkdir -p /config/xdg/config/gtk-3.0
+printf "[Settings]\ngtk-application-prefer-dark-theme=1" > /config/xdg/config/gtk-3.0/settings.ini
+uget-gtk
 fi
-GTK_THEME=$BREEZE uget-gtk
