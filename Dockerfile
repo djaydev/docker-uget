@@ -31,7 +31,8 @@ RUN apk upgrade --update-cache --available && \
     apk add \
     bash curl breeze-gtk aria2 openssl gnutls \
 		dbus-x11 libc6-compat gtk+3.0 libnotify gstreamer \
-		adwaita-icon-theme
+		adwaita-icon-theme \
+    && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]*
 
 # Adjust the openbox config.
 RUN \
@@ -50,7 +51,6 @@ RUN \
 
 # Copy the start script.
 COPY startapp.sh /startapp.sh
-RUN chmod +x /startapp.sh
 
 # Copy uGet from base build image.
 COPY --from=builder /usr/local /usr/local
