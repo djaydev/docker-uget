@@ -1,7 +1,7 @@
 # Pull base build image.
 FROM alpine:edge AS builder
 
-# Add testing repo for KDE packages
+# Add testing repo
 RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
 # Install packages.
