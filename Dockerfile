@@ -6,9 +6,9 @@ RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
 
 # Install packages.
 RUN apk --update --upgrade add \
-curl-dev gtk+3.0-dev automake autoconf intltool \
-musl-dev build-base git curl bash libc6-compat \
-libnotify-dev gnutls-dev openssl-dev gstreamer-dev
+    curl-dev gtk+3.0-dev automake autoconf intltool \
+    musl-dev build-base git curl bash libc6-compat \
+    libnotify-dev gnutls-dev openssl-dev gstreamer-dev
 
 WORKDIR /tmp
 
