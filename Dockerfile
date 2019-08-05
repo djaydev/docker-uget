@@ -30,7 +30,7 @@ RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
 RUN apk upgrade --update-cache --available && \
     apk add \
     bash curl aria2 openssl gnutls adwaita-icon-theme \
-		dbus-x11 libc6-compat gtk+3.0 libnotify gstreamer \
+    dbus-x11 libc6-compat gtk+3.0 libnotify gstreamer \
     && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]*
 
 # Adjust the openbox config.
