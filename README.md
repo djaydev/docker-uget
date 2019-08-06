@@ -26,6 +26,6 @@ Where:
 
 Browse to <http://your-host-ip:5800> to access the uGet GUI.
 
-### Environment Variables
+## Environment Variables
 
 Some environment variables can be set to customize the behavior of the container and its application. The following list give more details about them available at <https://github.com/jlesage/docker-baseimage-gui#environment-variables>
