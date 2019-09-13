@@ -1,11 +1,8 @@
 # Pull base build image.
-FROM alpine:edge AS builder
-
-# Add testing repo
-RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+FROM jlesage/baseimage-gui:alpine-3.9 AS builder
 
 # Install packages.
-RUN apk --update --upgrade add \
+RUN apk add \
     curl-dev gtk+3.0-dev automake autoconf intltool \
     musl-dev build-base git curl bash libc6-compat \
     libnotify-dev gnutls-dev openssl-dev gstreamer-dev
@@ -21,17 +18,11 @@ RUN cd urlget-uget2/ && chmod +x autogen.sh && ./autogen.sh && ./configure && ma
 # Pull base image.
 FROM jlesage/baseimage-gui:alpine-3.9
 
-# Add testing repo for edge upgrade
-RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    echo "http://dl-3.alpinelinux.org/alpine/edge/community/" >> /etc/apk/repositories && \
-    echo "http://dl-3.alpinelinux.org/alpine/edge/main/" >> /etc/apk/repositories
-
 # Install packages.
-RUN apk upgrade --update-cache --available && \
-    apk add \
+RUN apk add \
     bash curl aria2 openssl gnutls adwaita-icon-theme \
     dbus-x11 libc6-compat gtk+3.0 libnotify gstreamer \
-    && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]*
+    && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]* /usr/share/icons/Adwaita/cursors
 
 # Adjust the openbox config.
 RUN \
