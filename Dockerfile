@@ -24,7 +24,7 @@ FROM jlesage/baseimage-gui:alpine-3.9
 
 # Install packages.
 RUN apk add \
-    bash curl aria2 openssl gnutls adwaita-icon-theme \
+    bash curl aria2 openssl adwaita-icon-theme \
     dbus-x11 libc6-compat gtk+3.0 libgcrypt \
     && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]* /usr/share/icons/Adwaita/cursors
 
