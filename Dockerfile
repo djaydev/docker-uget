@@ -5,7 +5,7 @@ FROM jlesage/baseimage-gui:alpine-3.9 AS builder
 RUN apk add \
     curl-dev gtk+3.0-dev automake autoconf intltool \
     musl-dev build-base git curl bash libc6-compat \
-    libnotify-dev gnutls-dev openssl-dev gstreamer-dev
+    gnutls-dev openssl-dev libgcrypt-dev
 
 WORKDIR /tmp
 
@@ -13,7 +13,11 @@ WORKDIR /tmp
 RUN git clone git://git.code.sf.net/p/urlget/uget2 urlget-uget2
 
 # Compile uGet
-RUN cd urlget-uget2/ && chmod +x autogen.sh && ./autogen.sh && ./configure && make && make install
+RUN cd urlget-uget2/ \
+    && chmod +x autogen.sh && ./autogen.sh \
+    && ./configure --disable-notify --disable-gstreamer --disable-rss-notify --with-openssl --with-gnutls \
+    && make \
+    && make install
 
 # Pull base image.
 FROM jlesage/baseimage-gui:alpine-3.9
@@ -21,7 +25,7 @@ FROM jlesage/baseimage-gui:alpine-3.9
 # Install packages.
 RUN apk add \
     bash curl aria2 openssl gnutls adwaita-icon-theme \
-    dbus-x11 libc6-compat gtk+3.0 libnotify gstreamer \
+    dbus-x11 libc6-compat gtk+3.0 libgcrypt \
     && rm -rf /var/cache/apk/* /tmp/* /tmp/.[!.]* /usr/share/icons/Adwaita/cursors
 
 # Adjust the openbox config.
