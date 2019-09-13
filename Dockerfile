@@ -53,4 +53,5 @@ COPY --from=builder /usr/local /usr/local
 RUN echo "sed-patch 's/<body>/<body><style>body { background-color: dimgrey; }<\/style>\n/' /opt/novnc/index.html" >> /etc/cont-init.d/10-web-index.sh
 
 # Set the name of the application.
-ENV APP_NAME="uGet"
+ENV APP_NAME="uGet" \
+    THEME=light
