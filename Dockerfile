@@ -1,5 +1,5 @@
 # Pull base build image.
-FROM jlesage/baseimage-gui:alpine-3.9 AS builder
+FROM jlesage/baseimage-gui:alpine-3.10 AS builder
 
 # Install packages.
 RUN apk add \
@@ -20,7 +20,7 @@ RUN cd urlget-uget2/ \
     && make install
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.9
+FROM jlesage/baseimage-gui:alpine-3.10
 
 # Install packages.
 RUN apk add \
