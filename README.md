@@ -4,7 +4,7 @@ uGet can download videos from YouTube and a variety of different protocols inclu
 
 Project: <https://ugetdm.com/>
 
-Base image used: jlesage/baseimage-gui:alpine-3.9
+Base image used: jlesage/baseimage-gui:alpine
 
 ```shell
     docker run -d \
